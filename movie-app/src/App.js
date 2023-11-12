@@ -1,13 +1,11 @@
 
 import React from 'react';
-import Register from './pages/Register';
-import Navbar from './components/Navbar';
+import Approuter from './router/Approuter';
 
 function App() {
   return (
-    <div >
-      <Navbar/>
-      <Register/>
+    <div className='dark:bg-gray-dark-main min-h-screen' >
+      <Approuter/>
     </div>
   );
 }
