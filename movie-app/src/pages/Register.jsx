@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import GoogleIcon from "../assets/icons/GoogleIcon";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
+  const [name, setName] = useState("")
+  const [lastname, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { createUser } = useContext(AuthContext);
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    createUser(name,lastname,email,password)
+  }
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center dark:bg-gray-dark-main">
       <div
         className={`mt-[3vh] mx-auto overflow-hidden relative w-[380px] h-[620px] rounded-[8px] dark:bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}
       >
         <form
+         onSubmit={handleSubmit}
           
           className="absolute inset-[2px] rounded-[8px] bg-gray-100 dark:bg-[#28292d] z-[10] flex flex-col py-[50px] px-[40px]"
         >
@@ -21,6 +33,7 @@ const Register = () => {
               type="text"
               placeholder=" "
               required
+              onChange={(e)=> setName(e.target.value)}
               
             />
             <label htmlFor="floating_text">First Name</label>
@@ -32,6 +45,7 @@ const Register = () => {
               type="text"
               placeholder=" "
               required
+              onChange={(e)=> setLastName(e.target.value)}
             />
             <label htmlFor="floating_text">Last Name</label>
           </div>
@@ -42,6 +56,7 @@ const Register = () => {
               type="email"
               placeholder=" "
               required
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <label htmlFor="floating_email">Email</label>
           </div>
@@ -52,6 +67,7 @@ const Register = () => {
               type="password"
               placeholder=" "
               required
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <label htmlFor="floating_password">Password</label>
           </div>
