@@ -1,10 +1,13 @@
 
-import './App.css';
+import React from 'react';
+import Register from './pages/Register';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div >
+      <Navbar/>
+      <Register/>
     </div>
   );
 }
