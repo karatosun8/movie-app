@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react'
 import GoogleIcon from "../assets/icons/GoogleIcon";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext} from "../context/AuthContext";
 
 const Register = () => {
   const [name, setName] = useState("")
-  const [lastname, setLastName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { createUser } = useContext(AuthContext);
+  const { createUser,signUpProvider} = useContext(AuthContext);
 
   const handleSubmit = (e)=>{
+    const displayName = `${name} ${lastName}`
     e.preventDefault()
-    createUser(email,password)
+    createUser(email,password,displayName)
   }
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center dark:bg-gray-dark-main">
@@ -77,7 +78,7 @@ const Register = () => {
           <button
             type="button"
             className="btn-danger flex justify-between items-center"
-            
+            onClick={()=> signUpProvider()}
            
           >
             Continue with Google

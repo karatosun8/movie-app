@@ -1,7 +1,8 @@
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import avatar from "../assets/icons/avatar.png";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 
 
@@ -11,7 +12,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const currentUser = {displayName : "Sefa Karatosun"}
+  const {logOut,currentUser} = useContext(AuthContext)
+  // const currentUser = {displayName : "Sefa Karatosun"}
   return (
     <>
     <Disclosure as="nav" className="bg-neutral-100 dark:bg-gray-900 py-3 dark:text-white fixed top-0 z-20 w-full">
@@ -32,6 +34,7 @@ export default function Navbar() {
                         className="h-8 w-8 rounded-full"
                         src={currentUser?.photoURL || avatar}
                         alt=""
+                        referrerPolicy='no-referrer'
                       />
                     </Menu.Button>
                   </div>
@@ -68,9 +71,8 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <span
-                            
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer' )}
-                            
+                            onClick={()=> logOut()}
                           >
                             Logout
                           </span>
