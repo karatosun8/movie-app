@@ -13,7 +13,7 @@ getAuth,
     
   } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import { toastErrorNotify, toastSuccessNotify, toastWarnNotify } from "../helpers/ToastNotify";
 
 
 export const AuthContext = createContext();
