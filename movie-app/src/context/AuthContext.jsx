@@ -13,6 +13,7 @@ getAuth,
     
   } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 
 
 export const AuthContext = createContext();
@@ -30,11 +31,14 @@ const AuthContextProvider = ({ children }) => {
         email,
         password
       );
+       // console.log(userCredential);
+       toastSuccessNotify("Registered successfully!")
       navigate("/")
-      console.log(userCredential);
+     
       
     } catch (error) {
-      console.log(error.message);
+      toastErrorNotify(error.message)
+      // console.log(error.message);
     }
 
   };
@@ -47,9 +51,11 @@ const AuthContextProvider = ({ children }) => {
       //? mevcut kullanıcının giriş yapması için kullanılan firebase metodu
       let userCredential = await signInWithEmailAndPassword(auth, email, password)
       navigate("/")
+      toastSuccessNotify("Logged in successfully!");
       console.log(userCredential);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      toastErrorNotify(error.message);
       
     }
   }
