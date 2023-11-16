@@ -5,6 +5,7 @@ import MovieDetail from '../pages/MovieDetail'
 import Login from '../pages/Login'
 import Main from '../pages/Main'
 import Navbar from '../components/Navbar'
+import PrivateRouter from './PrivateRouter'
 
 const Approuter = () => {
   return (
@@ -15,7 +16,9 @@ const Approuter = () => {
         <Route path='/' element={<Main/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route element={<PrivateRouter/>}>
         <Route path='/details/:id' element={<MovieDetail/>}/>
+        </Route>
     </Routes>
     
     </>

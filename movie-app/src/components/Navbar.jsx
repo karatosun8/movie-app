@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import avatar from "../assets/icons/avatar.png";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-
+import Switch from "./Switch";
 
 
 
@@ -22,6 +22,8 @@ export default function Navbar() {
               <a className="pr-2 text-2xl font-semibold" href="/" > React Movie App</a>
               <div className="absolute inset-y-0 right-0 flex items-center ">
                 {currentUser && <h5 className='mr-2 capitalize'> {currentUser?.displayName}</h5> } 
+                
+                <Switch/>
                
 
                 {/* Profile dropdown */}
