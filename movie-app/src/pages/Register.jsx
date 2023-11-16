@@ -11,7 +11,7 @@ const Register = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    createUser(name,lastname,email,password)
+    createUser(email,password)
   }
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center dark:bg-gray-dark-main">
@@ -77,6 +77,7 @@ const Register = () => {
           <button
             type="button"
             className="btn-danger flex justify-between items-center"
+            
            
           >
             Continue with Google
